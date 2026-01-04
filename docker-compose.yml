@@ -1,0 +1,6 @@
+name: "email-queue"
+services:
+  db:
+    image: postgres:9.6
+    environment:
+      POSTGRES_PASSWORD: postgres
