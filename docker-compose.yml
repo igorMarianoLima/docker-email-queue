@@ -1,6 +1,12 @@
 name: "email-queue"
+volumes:
+  db_data:
 services:
   db:
     image: postgres:9.6
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./scripts:/scripts
+      - ./scripts/init.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
       POSTGRES_PASSWORD: postgres
