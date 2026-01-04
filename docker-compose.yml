@@ -47,12 +47,13 @@ services:
     networks:
       - queue_network
   worker:
-    image: python:3.6
+    build: worker
     volumes:
       - ./worker:/worker
     working_dir: /worker
-    command: bash ./app.sh
+    command: worker.py
     networks:
       - queue_network
     depends_on:
       - queue
+    scale: 3
